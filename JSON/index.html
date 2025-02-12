@@ -6,8 +6,50 @@
     <title>JSON Tutorial</title>
 </head>
 <body>
+    <button id="addButton">
+        Add me!
+    </button>
+    <button id="getJSON">
+        Press me!
+    </button>
+
+    <p id="output"></p>
     <script>
+        const addButton = document.getElementById('addButton');
+        const output = document.querySelector('#output');
+        String.prototype.capitalize = function() {
+                return this.charAt(0).toUpperCase() + this.slice(1);
+        }; 
+        const addJSON = async () => {
+            /** const url = "https://spreadsheets.google.com/feeds/list/1MnA07i8pgu99dj30MKO7nDtjlfTiVGZk3cBhH0HMtxo/od6/public/basic?alt=json/"; // Defunct
+            output.innerHTML = "";
+            const res = await fetch(url); // Returns 404
+            const resj = await res.json(); **/
+            const url = "https:/randomuser.me/api/?results=10";
+            output.innerHTML = "";
+            const res = await fetch(url);
+            const resj = await res.json();
+            const data = resj.results; 
+            const get_data = data.map(function(val, i) {
+                let div = document.createElement('div');
+                let img = document.createElement('img');
+                let span = document.createElement('span');
+                let firstName = val.name.first;
+                let lastName = val.name.last;
+                img.src = val.picture.thumbnail;
+                span.innerHTML = (i + 1)+' '+ firstName + ' ' + lastName + ' ' + val.gender.capitalize();
+                div.appendChild(span);
+                div.appendChild(img);
+                output.appendChild(div);
+                console.log(div);
+            });
+            get_data.join('');
+        }
+        addButton.addEventListener('click', addJSON);
+
+        
         
     </script>
+    <!--<script src="fetch_prac.js"></script>-->
 </body>
 </html>
