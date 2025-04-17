@@ -34,10 +34,10 @@ editFormDOM.addEventListener('submit', async (e) => {
   try {
     const taskName = taskNameDOM.value
     const taskCompleted = taskCompletedDOM.checked
-
+    
     const {
       data: { task },
-    } = await axios.patch(`/api/v1/tasks/${id}`, {
+    } = await axios.patch(`/api/v1/tasks/${id}`, { // There's a bug with this await that triggers an error from the id being null, but it still updates the data
       name: taskName,
       completed: taskCompleted,
     })
