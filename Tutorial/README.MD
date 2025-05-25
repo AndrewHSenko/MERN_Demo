@@ -1,0 +1,1 @@
+A collection of JS programs that utilize Express and basic Node.js, including async functions, event handling, and JSON parsing. From https://www.youtube.com/watch?v=Oe421EPjeBE by John Smiglia with freeCodeCamp.org, https://www.youtube.com/watch?v=IWcUJLUAO2A&t=1s by TechCode, and https://www.youtube.com/watch?v=3yi0yvHgPfQ by ByteGrade.
